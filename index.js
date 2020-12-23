@@ -13,7 +13,8 @@ let errorLED;
 const Start = () => {
   let hasError = false;
 
-  errorLED = new Gpio(11, { mode: Gpio.OUTPUT });
+  errorLED = new Gpio(17, { mode: Gpio.OUTPUT });
+  errorLED.pwmRange(25);
 
   sensor.on("result", async (data) => {
     let tempF = +(data.temperature * (9 / 5) + 32).toFixed(2);
@@ -31,12 +32,12 @@ const Start = () => {
       );
       console.log(res);
       if (hasError) {
-        errorLED.digitalWrite(0);
+        errorLED.pwmWrite(0);
         hasError = false;
       }
     } catch (err2) {
       console.log(err2);
-      errorLED.digitalWrite(1);
+      errorLED.pwmWrite(25);
       hasError = true;
     } finally {
       if (conn) conn.end();
@@ -45,7 +46,7 @@ const Start = () => {
 
   sensor.on("badChecksum", () => {
     console.log("Error reading sensor - bad checksum");
-    errorLED.digitalWrite(1);
+    errorLED.pwmWrite(25);
     hasError = true;
   });
 
@@ -56,6 +57,6 @@ const Start = () => {
 try {
   Start();
 } catch (err) {
-  errorLED.digitalWrite(1);
+  errorLED.pwmWrite(25);
   throw err;
 }

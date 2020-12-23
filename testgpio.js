@@ -17,4 +17,4 @@ sensor.on("result", (data) => {
   console.log(data);
 });
 console.log("Sensor read start");
-sensor.read();
+setInterval(sensor.read, 1000);

@@ -11,8 +11,6 @@ const sensor = dht(4, 11);
 let errorLED;
 
 const Start = () => {
-  sensor.setMaxRetries(10);
-  sensor.initialize(11, 4);
   let hasError = false;
 
   errorLED = new Gpio(11, { mode: Gpio.OUTPUT });

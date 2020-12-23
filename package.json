@@ -1,0 +1,17 @@
+{
+  "name": "temperature-reader",
+  "version": "1.0.0",
+  "description": "Reads pi temp sensor and posts to db",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "itsmeow",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "mariadb": "^2.5.2",
+    "moment": "^2.27.0",
+    "pigpio": "^3.2.4",
+    "pigpio-dht": "^1.1.1"
+  }
+}

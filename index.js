@@ -1,7 +1,7 @@
-const dht = require("dht");
+const Gpio = require("pigpio").Gpio;
+const dht = require("pigpio-dht");
 const moment = require("moment");
 const mariadb = require("mariadb");
-const Gpio = require("pigpio").Gpio;
 const pool = mariadb.createPool({
   host: "127.0.0.1",
   user: "tempsense",
